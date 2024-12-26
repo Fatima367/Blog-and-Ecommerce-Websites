@@ -11,7 +11,6 @@ const BLOGS_QUERY = defineQuery(`*[
 
 export default async function Home() {
   const { data: posts } = await sanityFetch({ query: BLOGS_QUERY });
-  console.log("Fetched posts:", posts);
 
   return (
     <div className="bg-slate-50 p-8 font-serif">
