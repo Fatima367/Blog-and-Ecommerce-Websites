@@ -1,37 +1,40 @@
-import { validation } from "sanity";
+import { defineType, validation } from "sanity";
 
-const posts = {
-    name: 'blog',
-    type: 'document',
-    title: 'Blog',
+const posts = defineType(
+{
+    name: "blog",
+    type: "document",
+    title: "Blog",
     fields: [
         {
-            name: 'title',
-            type: 'string',
-            title: 'Title',
-            validation: (Rule: any) => Rule.required()
+            name: "title",
+            type: "string",
+            title: "Title",
+            validation: (Rule) => Rule.required(),
         },
         {
-            name: 'image',
-            type: 'image',
-            title: 'Image'
+            name: "image",
+            type: "image",
+            title: "Image",
         },
         {
-            name: 'description',
-            type: 'array',
-            title: 'Description',
-            of: [{type: 'block'}],
-            validation: (Rule: any) => Rule.required()
-            .error(`Required to generate a page on the website`)
+            name: "description",
+            type: "array",
+            title: "Description",
+            of: [{ type: "block" }],
+            validation: (Rule) =>
+              Rule.required().error(`Description is required`),
         },
         {
-            name: 'slug',
-            type: 'slug',
-            options: {source: 'title'},
-            validation: (Rule: any) => Rule.required()
-            .error(`Required to generate a page on the website`),
+            name: "slug",
+            type: "slug",
+            title: "Slug",
+            options: { source: "title", maxLength: 96 },
+            validation: (Rule) =>
+              Rule.required().error(`Slug is required`),
         }
     ]
 }
+)
 
 export default posts;
