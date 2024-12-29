@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { AiFillBank } from "react-icons/ai";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { IoPhonePortraitOutline } from "react-icons/io5";

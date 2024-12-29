@@ -5,6 +5,7 @@ import { ChevronUp } from "lucide-react";
 import SectionThree from "./hero/section3";
 import SectionFour from "./hero/section4";
 
+
 export default function Home() {
   return (
     <div className="relative">

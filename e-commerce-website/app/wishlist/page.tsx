@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
-import { FaSquareMinus, FaSquarePlus } from "react-icons/fa6";
-import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
+import { IoHeartSharp } from "react-icons/io5";
 
 export default function Wishlist() {
   return (

@@ -1,6 +1,4 @@
-import { ChevronDown, ChevronUp } from "lucide-react";
 import Image from "next/image";
-import Navbar from "../navbar/Navbar";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { FaSquareMinus, FaSquarePlus } from "react-icons/fa6";
