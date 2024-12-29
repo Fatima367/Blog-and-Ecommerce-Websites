@@ -1,11 +1,11 @@
 {
     "extends": ["next/core-web-vitals", "next/typescript"],
-    "rules" : {
-      "@typescript/no-unused-vars" : "off",
-      "react/no-unescaped-entities": "off",
-      // Ignore specific Next.js route errors
-      "@next/next/no-server-import-in-page": "off",
-      "@next/next/no-typos": "off",
-      "no-unresolved": "off",    
+    "overrides": [
+      {
+        "files": ["pages/**/*.tsx"], // or any specific pattern
+        "rules": {
+          "@typescript-eslint/no-explicit-any": "off" // Disable in specific files
+        },
+      },
+    ]
     }
-  }
