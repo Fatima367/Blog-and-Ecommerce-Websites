@@ -10,7 +10,7 @@
       "@next/next/no-server-import-in-page": "off",
       "@next/next/no-typos": "off",
       "no-unresolved": "off",
-      "import/no-unresolved": [2, { "ignore": ["lucide-react"] }]
+      "import/no-unresolved": [2, { "ignore": ["explicit-any"] }]
     
     }
   }
