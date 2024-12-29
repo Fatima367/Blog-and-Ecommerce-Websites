@@ -4,7 +4,7 @@ import Content from "./content/page";
 
 export default async function Home() {
   return (
-    <div className=" font-serif">
+    <div>
       <Hero />
       <Content />
       <About />
