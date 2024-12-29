@@ -3,13 +3,9 @@
     "rules" : {
       "@typescript/no-unused-vars" : "off",
       "react/no-unescaped-entities": "off",
-      "@next/next/no-page-custom-font": "off",
-      "@typescript-eslint/no-empty-object-type" : "off",
       // Ignore specific Next.js route errors
       "@next/next/no-server-import-in-page": "off",
       "@next/next/no-typos": "off",
-      "no-unresolved": "off",
-      "import/no-unresolved": [2, { "ignore": ["explicit-any"] }]
-    
+      "no-unresolved": "off",    
     }
   }
