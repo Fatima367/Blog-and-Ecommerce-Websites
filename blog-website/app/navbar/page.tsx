@@ -7,14 +7,14 @@ export default function Navbar() {
         font-serif text-white flex items-center justify-between"
     >
       <Link href="/">
-        <h1 className="font-bold text-2xl">Blogverse</h1>
+        <h1 className="font-bold text-3xl">Blogverse</h1>
       </Link>
-      <div className="flex justify-end mr-5 space-x-5">
+      <div className="flex justify-end mr-5 space-x-5 items-center">
         <Link href="/content">
-          <p className="text-lg hover:text-cyan-500 "> Blogs</p>
+          <p className="text-xl hover:text-cyan-500 "> Blogs</p>
         </Link>
         <Link href="/about">
-          <p className="text-lg hover:text-cyan-500 "> About</p>
+          <p className="text-xl hover:text-cyan-500 "> About</p>
         </Link>
       </div>
     </nav>

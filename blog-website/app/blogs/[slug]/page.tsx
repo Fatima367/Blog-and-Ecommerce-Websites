@@ -45,11 +45,17 @@ export default async function blogPage({
 
   return (
     <main className="container mx-auto grid gap-8 p-8 font-serif text-blue-950">
-      <div className="mb-4 items-center flex space-x-2 shadow-md w-fit p-2 px-4 rounded-lg bg-slate-100">
-        <p>←</p>
-        <Link href="/content">Back</Link>
-      </div>
-      <div className="grid items-top gap-12 sm:grid-cols-2">
+      <Link href="/content">
+        <div
+          className="mb-4 items-center flex space-x-2 shadow-md w-fit p-2 px-4 rounded-lg
+       bg-slate-100 text-xl"
+        >
+          <p>←</p>
+          Back
+        </div>
+      </Link>
+
+      <div className="grid items-top gap-12 sm:grid-cols-2 mb-12">
         {imageUrl && (
           <Image
             src={imageUrl}
@@ -59,8 +65,8 @@ export default async function blogPage({
             width={530}
           />
         )}
-        <div className="flex flex-col justify-center space-y-4">
-          <h1 className="text-2xl font-bold">{title}</h1>
+        <div className="flex flex-col justify-center space-y-4 lg:text-xl text-base">
+          <h1 className="text-2xl lg:text-4xl font-bold">{title}</h1>
           <PortableText value={description} />
         </div>
       </div>

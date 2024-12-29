@@ -4,7 +4,7 @@ export default function About() {
       <div className="flex flex-col items-center justify-center text-blue-950">
         <h1 className="text-4xl font-bold mt-8 p-4 rounded-lg">About Us</h1>
         <div className="p-4 bg-opacity-90 px-8 mt-2 mb-8 rounded-lg mx-8 bg-white shadow-lg">
-          <p className="text-2xl lg:text-center">
+          <p className="lg:text-2xl text-center text-xl">
             Welcome to Blogverse, your go-to destination for everything tech!
             Our mission is simple – to bring you the latest trends, insights,
             and innovations shaping the digital world. From AI to quantum
