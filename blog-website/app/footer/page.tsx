@@ -1,11 +1,7 @@
 import Link from "next/link";
 import {
-  FaFacebook,
-  FaInstagram,
   FaLinkedin,
-  FaWhatsapp,
 } from "react-icons/fa";
-import { FaPhoneFlip } from "react-icons/fa6";
 
 export default function Footer() {
   return (

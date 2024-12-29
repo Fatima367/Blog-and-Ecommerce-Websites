@@ -2,13 +2,6 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { defineQuery, PortableText } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Key,
-  ReactElement,
-  JSXElementConstructor,
-  ReactNode,
-  ReactPortal,
-} from "react";
 
 const BLOGS_QUERY = defineQuery(`*[ 
   _type == "blog" 
