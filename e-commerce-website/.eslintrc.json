@@ -9,7 +9,8 @@
       // Ignore specific Next.js route errors
       "@next/next/no-server-import-in-page": "off",
       "@next/next/no-typos": "off",
-      "no-unresolved": "off"
+      "no-unresolved": "off",
+      "import/no-unresolved": [2, { "ignore": ["lucide-react"] }]
     
     }
   }
