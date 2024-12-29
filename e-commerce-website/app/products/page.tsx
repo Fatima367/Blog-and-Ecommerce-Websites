@@ -1,102 +1,100 @@
 import Image from "next/image";
+import Link from "next/link";
+import { IoHeartOutline } from "react-icons/io5";
 
 interface Product {
-    id: number,
-    image : string,
-    name: string,
-    priceNow: string,
-    priceWas: string,
+  id: number;
+  image: string;
+  name: string;
+  priceNow: string;
+  priceWas: string;
 }
 
-export default function Products(){
-
-    const products:Product[] = [{
-        id:1,
-        image : "/images/prodimg2.png",
-        name: "Birthday Special",
-        priceNow: "$200",
-        priceWas: "$220"
+export default function Products() {
+  const products: Product[] = [
+    {
+      id: 1,
+      image: "/images/prodimg2.png",
+      name: "Birthday Special",
+      priceNow: "$200",
+      priceWas: "$220",
     },
     {
-        id:2,
-        image : "/images/prodimg2.png",
-        name: "Birthday Special",
-        priceNow: "$200",
-        priceWas: "$220"
+      id: 2,
+      image: "/images/prodimg3.png",
+      name: "Birthday Special",
+      priceNow: "$200",
+      priceWas: "$220",
     },
     {
-        id:3,
-        image : "/images/prodimg2.png",
-        name: "Birthday Special",
-        priceNow: "$200",
-        priceWas: "$220"
+      id: 3,
+      image: "/images/prodimg4.png",
+      name: "Birthday Special",
+      priceNow: "$200",
+      priceWas: "$220",
     },
     {
-        id:4,
-        image : "/images/prodimg2.png",
-        name: "Birthday Special",
-        priceNow: "$200",
-        priceWas: "$220"
+      id: 4,
+      image: "/images/prodimg5.png",
+      name: "Birthday Special",
+      priceNow: "$200",
+      priceWas: "$220",
     },
-    ]
+  ];
 
-    return(
-        <div className="flex items-center justify-center mx-auto mt-8">
-        <div className="space-y-[60px] flex flex-col items-start justify-between mx-auto">
-          <div className="space-x-[611px] flex items-center justify-stretch">
-            <div className="space-y-[20px] flex flex-col">
+  return (
+    <div className="flex items-center justify-center mx-auto mt-8 w-full">
+      <div
+        className="relative flex sm:grid-cols-2 lg:grid-cols-4 md:grid md:grid-cols-2 gap-8
+           overflow-x-auto lg:overflow-visible mb-8 lg:w-full w-80 md:w-full mx-auto px-5"
+      >
+        {products.map((product: any) => (
+          <div
+            className="space-y-4 relative shadow-md p-6 w-80 md:w-full lg:w-auto rounded-md hover:scale-105 transition duration-100"
+            key={product.id}
+          >
+            <IoHeartOutline className="h-8 w-8 right-5 absolute" />
+            <Image
+              src={product.image}
+              width={300}
+              height={280}
+              alt="related-item"
+              className="self-center mx-auto"
+            />
 
-              <h2 className="text-[36px] font-semibold">
-                Best Selling Products
-              </h2>
-            </div>
-            <button className="px-[48px] py-[16px] space-x-[10px] rounded bg-[#DB4444] text-white mt-14">
-              <p className="text-[16px] font-medium">View All</p>
-            </button>
-          </div>
-
-          <div className="lg:grid lg:grid-cols-4 lg:items-center lg:justify-center lg:gap-[30px] grid grid-cols-1 space-y-6">
-
-        {products.map((product:any)=> (
-            <div className="space-y-[16px] relative shadow-md p-6" key={product.id}>
-              <Image
-              src="/images/Wishlist.png"
-              height={30}
-              width={30}
-              alt="fav"
-              className="absolute top-4 right-4 cursor-pointer"
-               />
-              <Image
-                src={product.image}
-                width={270}
-                height={250}
-                alt="related-item"
-              />
-
-              <div className="space-y-[8px]">
-                <p className="text-[16px] font-medium">{product.name}</p>
-                <div className="flex space-x-[12px]">
-                  <p className="text-[16px] text-[#DB4444] font-medium">{product.priceNow}</p>
-                  <p className="text-[16px] font-medium line-through opacity-50">
-                    $160
-                  </p>
-                </div>
-                <div className="flex space-x-[8px]">
-                  <Image
-                    src="/images/Five star.png"
-                    height={20}
-                    width={100}
-                    alt="ratings"
-                  />
-                  <p className="text-[14px] font-semibold opacity-50">(88)</p>
-                </div>
+            <div className="space-y-2">
+              <p className="text-2xl font-bold">{product.name}</p>
+              <div className="flex space-x-3 items-center">
+                <p className="text-2xl text-red-500 font-semibold">
+                  {product.priceNow}
+                </p>
+                <p className="text-xl font-medium line-through opacity-50">
+                  $160
+                </p>
+              </div>
+              <div className="flex space-x-3 items-center">
+                <Image
+                  src="/images/Five star.png"
+                  height={20}
+                  width={100}
+                  alt="ratings"
+                />
+                <p className="text-lg font-semibold opacity-50">(88)</p>
+              </div>
+              <div className="flex justify-center mx-auto">
+                <Link href="/product-detail">
+                  <button
+                    className="mt-4 mb-5 gap-2 rounded-full bg-rose-500 text-white min-h-12 w-36
+                  font-medium text-base"
+                  >
+                    Buy Now
+                  </button>
+                </Link>
               </div>
             </div>
+          </div>
         ))}
-
-        </div>
-        </div>
-        </div>
-
-    )
+      </div>
+    </div>
+  );
 }

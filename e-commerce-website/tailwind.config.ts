@@ -13,6 +13,9 @@ export default {
         foreground: "var(--foreground)",
       },
     },
-  },
+  	fontFamily: {
+  		Arima: ["Arima, sans-serif"],
+  		sans: ["sans-serif"]
+  	}  },
   plugins: [],
 } satisfies Config;
