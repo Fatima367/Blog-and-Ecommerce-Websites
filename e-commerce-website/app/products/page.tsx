@@ -48,7 +48,7 @@ export default function Products() {
         className="relative flex sm:grid-cols-2 lg:grid-cols-4 md:grid md:grid-cols-2 gap-8
            overflow-x-auto lg:overflow-visible mb-8 lg:w-full w-80 md:w-full mx-auto px-5"
       >
-        {products.map((product: any) => (
+        {products.map((product) => (
           <div
             className="space-y-4 relative shadow-md p-6 w-80 md:w-full lg:w-auto rounded-md hover:scale-105 transition duration-100"
             key={product.id}
