@@ -50,7 +50,8 @@ export default function Products() {
       >
         {products.map((product) => (
           <div
-            className="space-y-4 relative shadow-md p-6 w-80 md:w-full lg:w-auto rounded-md hover:scale-105 transition duration-100"
+            className="bg-white rounded-lg flex flex-col p-5 relative flex-shrink-0 lg:flex-shrink
+          w-[304px] md:w-full lg:w-auto lg:hover:scale-105 transition duration-100 lg:space-y-4"
             key={product.id}
           >
             <IoHeartOutline className="h-8 w-8 right-5 absolute" />
@@ -59,7 +60,7 @@ export default function Products() {
               width={300}
               height={280}
               alt="related-item"
-              className="self-center mx-auto"
+              className="self-center w-full h-auto object-cover mx-auto"
             />
 
             <div className="space-y-2">
@@ -84,7 +85,7 @@ export default function Products() {
               <div className="flex justify-center mx-auto">
                 <Link href="/product-detail">
                   <button
-                    className="mt-4 mb-5 gap-2 rounded-full bg-rose-500 text-white min-h-12 w-36
+                    className="lg:mt-4 mt-3 mb-5 gap-2 rounded-full bg-rose-500 text-white min-h-12 w-36
                   font-medium text-base"
                   >
                     Buy Now

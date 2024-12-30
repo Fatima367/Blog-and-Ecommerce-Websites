@@ -8,11 +8,11 @@ export default function SectionThree() {
       <div className="flex flex-col items-center justify-center mx-auto gap-5 mb-12">
         <h1
           className="text-4xl font-bold bg-opacity-90 p-4 rounded-full
-                 px-8"
+                 lg:px-8 text-center"
         >
           Easy Payment Methods
         </h1>
-        <div className="flex mt-8 gap-20">
+        <div className="lg:flex-row mt-8 lg:gap-20 gap-8 flex flex-col">
           <div className="flex flex-col items-center">
             <GiTakeMyMoney className="h-20 w-20" />
             <p className="text-2xl"> Cash on delivery</p>
