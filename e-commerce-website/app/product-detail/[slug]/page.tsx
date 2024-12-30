@@ -10,7 +10,6 @@ import { sanityFetch } from "@/sanity/lib/live";
 import { notFound } from "next/navigation";
 import imageUrlBuilder from "@sanity/image-url";
 
-
 const PRODUCTS_QUERY = defineQuery(`*[ 
   _type == "products" && 
   slug.current == $slug
@@ -38,7 +37,6 @@ export default async function ProductDetailsPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-
   const { slug } = await params;
   const { data: products } = await sanityFetch({
     query: PRODUCTS_QUERY,
@@ -49,12 +47,13 @@ export default async function ProductDetailsPage({
     notFound();
   }
 
-  const { name, description, image, price, oldPrice, reviews, ratingsImage } = products;
+  const { name, description, image, price, oldPrice, reviews, ratingsImage } =
+    products;
 
   const imageUrl = image ? urlFor(image)?.width(450).height(450).url() : null;
-  const ratingsImageUrl = ratingsImage ? urlFor(ratingsImage)?.width(100).height(20).url() : null;
-
-
+  const ratingsImageUrl = ratingsImage
+    ? urlFor(ratingsImage)?.width(100).height(20).url()
+    : null;
 
   return (
     <div className="">
@@ -72,14 +71,14 @@ export default async function ProductDetailsPage({
                 flex items-center justify-center"
           >
             {imageUrl && (
-            <Image
-              src={imageUrl}
-              width={450}
-              height={450}
-              alt={name || "related-image"}
-              className="lg:w-full lg:h-auto"
-            />
-          )}
+              <Image
+                src={imageUrl}
+                width={450}
+                height={450}
+                alt={name || "related-image"}
+                className="lg:w-full lg:h-auto"
+              />
+            )}
           </div>
 
           {/*Center*/}
@@ -88,13 +87,13 @@ export default async function ProductDetailsPage({
             <div className="space-x-4 flex flex-row items-center justify-center">
               <div className="space-x-2 flex items-center justify-center mt-3">
                 {ratingsImageUrl && (
-                <Image
-                  src={ratingsImageUrl || "ratings"}
-                  height={20}
-                  width={100}
-                  alt="ratings"
-                />
-              )}
+                  <Image
+                    src={ratingsImageUrl || "ratings"}
+                    height={20}
+                    width={100}
+                    alt="ratings"
+                  />
+                )}
                 <p className="text-base opacity-50">({reviews}) Reviews</p>
               </div>
               <div className="space-x-4 flex flex-row items-center justify-center mt-3">
@@ -102,9 +101,14 @@ export default async function ProductDetailsPage({
                 <p className="text-green-500 text-lg opacity-60">In Stock</p>
               </div>
             </div>
-            <h2 className="text-3xl mt-4 font-bold text-red-500">{price}.00</h2>
+            <h2 className="text-3xl mt-4 font-bold text-red-500 flex items-center">
+              {price}.00
+              <span className="ml-4 text-2xl text-black font-medium opacity-50 line-through">
+                {oldPrice}
+              </span>
+            </h2>
             <p className="text-md mt-6 max-w-96">
-            <PortableText value={description} />
+              <PortableText value={description} />
             </p>
 
             <hr className="mt-6" />
