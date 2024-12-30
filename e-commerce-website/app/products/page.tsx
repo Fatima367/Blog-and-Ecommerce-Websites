@@ -3,7 +3,7 @@ import { defineQuery } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 import { IoIosBasket } from "react-icons/io";
-import { IoHeartOutline } from "react-icons/io5";
+import FavIcon from "../components/fav-button";
 
 const PRODUCTS_QUERY = defineQuery(`*[ 
   _type == "products"
@@ -44,7 +44,7 @@ export default async function Products() {
            lg:space-y-4"
               key={product._id}
             >
-              <IoHeartOutline className="h-8 w-8 right-5 absolute" />
+              <FavIcon product={product} />
               <Image
                 src={product.image || "/placeholder-image.png"}
                 width={300}
