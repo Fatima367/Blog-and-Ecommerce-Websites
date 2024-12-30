@@ -1,16 +1,67 @@
 import Image from "next/image";
-import Products from "../products/page";
+import Products from "@/app/products/page";
 import { IoHeartOutline } from "react-icons/io5";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
+import { defineQuery, PortableText } from "next-sanity";
+import { client } from "@/sanity/lib/client";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { sanityFetch } from "@/sanity/lib/live";
+import { notFound } from "next/navigation";
+import imageUrlBuilder from "@sanity/image-url";
 
-export default function ProductDetailsPage() {
+
+const PRODUCTS_QUERY = defineQuery(`*[ 
+  _type == "products" && 
+  slug.current == $slug
+][0]{
+...,
+  _id,
+  name,
+  slug,
+  description,
+  price,
+  oldPrice,
+  reviews,
+  "imageUrl": image.asset->url,
+  "ratingsImageUrl": ratingsImage.asset->url
+}`);
+
+const { projectId, dataset } = client.config();
+const urlFor = (source: SanityImageSource) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
+
+export default async function ProductDetailsPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+
+  const { slug } = await params;
+  const { data: products } = await sanityFetch({
+    query: PRODUCTS_QUERY,
+    params: { slug },
+  });
+  if (!products) {
+    console.error("Product not found for slug:", slug);
+    notFound();
+  }
+
+  const { name, description, image, price, oldPrice, reviews, ratingsImage } = products;
+
+  const imageUrl = image ? urlFor(image)?.width(450).height(450).url() : null;
+  const ratingsImageUrl = ratingsImage ? urlFor(ratingsImage)?.width(100).height(20).url() : null;
+
+
+
   return (
     <div className="">
       <div className="flex flex-col items-start justify-between mx-auto lg:px-10">
         <div className="mt-10 mx-auto w-full">
           <div className="flex ml-0 bg-white text-rose-600 p-4 w-full bg-opacity-80 rounded-full shadow-sm">
-            <h2 className="text-3xl font-semibold">Birthday Special</h2>
+            <h2 className="text-3xl font-semibold">{name}</h2>
           </div>
         </div>
 
@@ -20,38 +71,40 @@ export default function ProductDetailsPage() {
             className="bg-gray-50 rounded
                 flex items-center justify-center"
           >
+            {imageUrl && (
             <Image
-              src="/images/prodimg4.png"
+              src={imageUrl}
               width={450}
               height={450}
-              alt="gamepad"
+              alt={name || "related-image"}
               className="lg:w-full lg:h-auto"
             />
+          )}
           </div>
 
           {/*Center*/}
           <div className="flex flex-col ml-16 justify-center items-start">
-            <h1 className="text-3xl font-bold">Birthday Special</h1>
+            <h1 className="text-3xl font-bold">{name}</h1>
             <div className="space-x-4 flex flex-row items-center justify-center">
               <div className="space-x-2 flex items-center justify-center mt-3">
+                {ratingsImageUrl && (
                 <Image
-                  src="/images/Four Star.png"
+                  src={ratingsImageUrl || "ratings"}
                   height={20}
                   width={100}
                   alt="ratings"
                 />
-                <p className="text-base opacity-50">(150 Reviews)</p>
+              )}
+                <p className="text-base opacity-50">({reviews}) Reviews</p>
               </div>
               <div className="space-x-4 flex flex-row items-center justify-center mt-3">
                 <p>|</p>
                 <p className="text-green-500 text-lg opacity-60">In Stock</p>
               </div>
             </div>
-            <h2 className="text-3xl mt-4 font-bold text-red-500">$192.00</h2>
+            <h2 className="text-3xl mt-4 font-bold text-red-500">{price}.00</h2>
             <p className="text-md mt-6 max-w-96">
-              PlayStation 5 Controller Skin High quality vinyl with air channel
-              adhesive for easy bubble free install & mess free removal Pressure
-              sensitive.
+            <PortableText value={description} />
             </p>
 
             <hr className="mt-6" />
