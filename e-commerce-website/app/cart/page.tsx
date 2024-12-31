@@ -7,6 +7,10 @@ import { useEffect, useState } from "react";
 
 export default function Cart() {
   const [cart, setCart] = useState<any[]>([]);
+  const [subtotal, setSubtotal] = useState(0);
+  const [deliveryCharges] = useState(20);
+  const [isCheckout, setIsCheckout] = useState(false);
+  const [isOrderPlaced, setIsOrderPlaced] = useState(false);
 
   useEffect(() => {
     const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -19,6 +23,17 @@ export default function Cart() {
     const updatedCart = cart.filter((item) => item._id !== itemId); // Remove item with the given _id
     setCart(updatedCart); // Update the wishlist state
     localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update localStorage
+  };
+
+  const handleCheckout = () => {
+    setIsCheckout(true);
+  };
+
+  const handlePlaceOrder = () => {
+    setIsOrderPlaced(true);
+    setCart([]);
+    localStorage.removeItem("cart");
+    setIsCheckout(false);
   };
 
   return (
@@ -99,6 +114,7 @@ export default function Cart() {
                   Total: <span className="text-green-600 ml-36">$380</span>
                 </h2>
                 <button
+                  onClick={handleCheckout}
                   className="w-40 h-14 bg-rose-500 rounded-md text-white text-lg
                 hover:bg-rose-800"
                 >
@@ -109,6 +125,71 @@ export default function Cart() {
           </div>
         ) : (
           <p className="text-xl text-gray-500">Your cart is empty.</p>
+        )}
+
+        {(isCheckout || isOrderPlaced) && (
+          <div
+            className="absolute top-0 left-0 w-full h-screen bg-black bg-opacity-50 flex 
+          items-center justify-center"
+          >
+            <div className="bg-white p-6 rounded-lg shadow-md text-center w-1/3">
+              {isOrderPlaced ? (
+                <div>
+                  <h2 className="text-2xl font-bold mb-4">
+                    Order Placed Successfully!
+                  </h2>
+                  <button
+                    className="bg-rose-500 text-white px-4 py-2 rounded text-xl
+                  hover:bg-rose-800"
+                    onClick={() => setIsOrderPlaced(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <h2 className="text-xl font-bold mb-4">Checkout</h2>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      handlePlaceOrder();
+                    }}
+                  >
+                    <input
+                      type="text"
+                      required
+                      placeholder="Name"
+                      className="mb-4 p-2 w-full border rounded"
+                    />
+                    <input
+                      type="email"
+                      required
+                      placeholder="Email"
+                      className="mb-4 p-2 w-full border rounded"
+                    />
+                    <textarea
+                      required
+                      placeholder="Address"
+                      className="mb-4 p-2 w-full border rounded"
+                    ></textarea>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="Phone"
+                      className="mb-4 p-2 w-full border rounded"
+                    />
+                    <button
+                      type="submit"
+                      className="w-full bg-green-600 text-white py-2 rounded font-medium
+                    text-xl hover:bg-green-800"
+                    >
+                      Place Order
+                    </button>
+                  </form>
+                </div>
+              )}
+            </div>
+          </div>
         )}
       </section>
     </div>
