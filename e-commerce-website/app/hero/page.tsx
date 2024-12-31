@@ -11,7 +11,7 @@ export default function Hero() {
           className="lg:text-6xl text-4xl text-white font-bold z-20 lg:ml-16
         lg:text-left text-center lg:w-auto w-60 lg:pt-0 pt-10"
         >
-          GET YOUR BLISSED WRAPS FOR YOUR OCCASIONS
+          PREMIUM GIFT BASKETS FOR EVERY OCCASION!
         </h1>
         <Image
           src="/images/prodimg4.png"
