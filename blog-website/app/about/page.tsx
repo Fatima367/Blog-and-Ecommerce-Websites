@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="min-h-screen font-serif bg-slate-100">
+    <div className="min-h-screen font-serif bg-slate-50">
       <div className="flex flex-col items-center justify-center text-blue-950">
         <h1 className="text-4xl font-bold mt-8 p-4 rounded-lg">About Us</h1>
         <div className="p-4 bg-opacity-90 px-8 mt-2 mb-8 rounded-lg mx-8 bg-white shadow-lg">
