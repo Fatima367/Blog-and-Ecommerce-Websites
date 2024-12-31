@@ -4,6 +4,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 import { FaSquareMinus, FaSquarePlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
+import { RxCross2 } from "react-icons/rx";
 
 export default function Cart() {
   const [cart, setCart] = useState<any[]>([]);
@@ -16,13 +17,55 @@ export default function Cart() {
     const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
     cart.push(cartItems);
     setCart(cartItems);
+
+    // Ensure `quantity` is initialized correctly
+    const updatedCart = cartItems.map((item: any) => ({
+      ...item,
+      quantity: item.quantity || 1, // Default to 1 if quantity is undefined
+      price: parseFloat(item.price) || 0, // Ensure price is a valid number
+    }));
+
+    setCart(updatedCart);
   }, []);
 
-  // Handle deleting an item from the wishlist
+  // Function to calculate subtotal
+  useEffect(() => {
+    const calculateSubtotal = () => {
+      const total = cart.reduce((sum, item) => {
+        const price = item.price; // `price` is already parsed in cart loading
+        const quantity = item.quantity || 0; // Ensure `quantity` is valid
+        return sum + price * quantity;
+      }, 0);
+      setSubtotal(total);
+    };
+    calculateSubtotal();
+  }, [cart]);
+
+  // Handle deleting an item
   const handleDelete = (itemId: string) => {
-    const updatedCart = cart.filter((item) => item._id !== itemId); // Remove item with the given _id
-    setCart(updatedCart); // Update the wishlist state
+    const updatedCart = cart.filter((item) => item._id !== itemId); // Remove item by ID
+    setCart(updatedCart); // Update state
     localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update localStorage
+  };
+
+  // Handle increasing item quantity
+  const handleIncreaseQuantity = (itemId: string) => {
+    const updatedCart = cart.map((item) =>
+      item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  // Handle decreasing item quantity
+  const handleDecreaseQuantity = (itemId: string) => {
+    const updatedCart = cart.map((item) =>
+      item._id === itemId && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item
+    );
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const handleCheckout = () => {
@@ -66,7 +109,7 @@ export default function Cart() {
                         <p className="text-xl mt-4">
                           Price:{" "}
                           <span className="text-red-500 font-semibold text-2xl">
-                            {item.price}
+                            ${item.price}
                           </span>
                         </p>
                       </div>
@@ -82,11 +125,17 @@ export default function Cart() {
                       <div className="flex items-center">
                         <p className="text-xl">Quantity:</p>
                         <div className="ml-3 flex items-center">
-                          <FaSquarePlus className="lg:h-9 lg:w-9 h-8 w-8 text-green-500" />
+                          <FaSquarePlus
+                            onClick={() => handleIncreaseQuantity(item._id)}
+                            className="lg:h-9 lg:w-9 h-8 w-8 text-green-500"
+                          />
                           <p className="text-xl lg:mx-4 mx-2">
                             {item.quantity}
                           </p>
-                          <FaSquareMinus className="lg:h-9 lg:w-9 h-8 w-8 text-red-500" />
+                          <FaSquareMinus
+                            onClick={() => handleDecreaseQuantity(item._id)}
+                            className="lg:h-9 lg:w-9 h-8 w-8 text-red-500"
+                          />
                         </div>
                       </div>
                     </div>
@@ -95,6 +144,7 @@ export default function Cart() {
               </div>
             ))}
 
+            {/* Subtotal and Total */}
             <div className="p-6 border-b border-b-gray-200 rounded-md bg-white">
               <div className="flex gap-16">
                 <div className="mb-5 flex flex-col gap-5">
@@ -102,23 +152,22 @@ export default function Cart() {
                   <p className="text-lg">Delivery Charges:</p>
                 </div>
                 <div className="mb-5 flex flex-col gap-5">
-                  <p className="text-lg">$360</p>
-                  <p className="text-lg">$20</p>
+                  <p className="text-lg">${subtotal.toFixed(2)}</p>
+                  <p className="text-lg">${deliveryCharges.toFixed(2)}</p>
                 </div>
               </div>
-              <div
-                className="flex flex-col lg:flex-row lg:gap-0 gap-4 lg:items-center lg:justify-between
-              justify-start"
-              >
+              <div className="flex flex-col lg:flex-row lg:gap-0 gap-4 lg:items-center lg:justify-between justify-start">
                 <h2 className="text-2xl font-bold flex items-center">
-                  Total: <span className="text-green-600 ml-36">$380</span>
+                  Total:{" "}
+                  <span className="text-green-600 ml-36">
+                    ${(subtotal + deliveryCharges).toFixed(2)}
+                  </span>
                 </h2>
                 <button
                   onClick={handleCheckout}
-                  className="w-40 h-14 bg-rose-500 rounded-md text-white text-lg
-                hover:bg-rose-800"
+                  className="w-40 h-14 bg-rose-500 rounded-md text-white text-lg hover:bg-rose-800"
                 >
-                  Chekout
+                  Checkout
                 </button>
               </div>
             </div>
@@ -147,7 +196,11 @@ export default function Cart() {
                   </button>
                 </div>
               ) : (
-                <div>
+                <div className="p-2 relative">
+                  <RxCross2
+                    onClick={() => setIsCheckout(false)}
+                    className="h-5 w-5 absolute top-0 right-0 hover:cursor-pointer"
+                  />
                   <h2 className="text-xl font-bold mb-4">Checkout</h2>
                   <form
                     onSubmit={(e) => {

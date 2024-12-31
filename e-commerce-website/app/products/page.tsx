@@ -57,7 +57,7 @@ export default async function Products() {
                 <p className="text-2xl font-bold">{product.name}</p>
                 <div className="flex space-x-3 items-center">
                   <p className="text-2xl text-red-500 font-semibold">
-                    {product.price}
+                    ${product.price}
                   </p>
                   <p className="text-xl font-medium line-through opacity-50">
                     {product.oldPrice}

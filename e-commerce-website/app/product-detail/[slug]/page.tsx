@@ -110,7 +110,7 @@ export default async function ProductDetailsPage({
                 </div>
               </div>
               <h2 className="text-3xl mt-4 font-bold text-red-500 flex items-center">
-                {price}.00
+                ${price.toFixed(2)}
                 <span className="ml-4 text-2xl text-black font-medium opacity-50 line-through">
                   {oldPrice}
                 </span>
@@ -123,11 +123,9 @@ export default async function ProductDetailsPage({
 
               <div className="flex space-x-8 mt-6 items-center">
                 <p className="text-lg">Quantity</p>
-                <input
-                  placeholder="1"
-                  type="number"
-                  className="ring ring-gray-50 rounded-md p-2 w-fit placeholder:text-black"
-                />
+                <div className="ring ring-gray-50 rounded-md px-4 py-1 flex items-center justify-center">
+                  <p>1</p>
+                </div>
               </div>
 
               <div className="flex mt-6 space-x-5 items-center">

@@ -25,7 +25,7 @@ const products = defineType({
     },
     {
       name: "price",
-      type: "string",
+      type: "number",
       title: "Price",
       validation: (Rule) => Rule.required(),
     },

@@ -68,7 +68,7 @@ export default function Wishlist({ product }: any) {
                         <p className="text-xl mt-4 lg:justify-start flex items-center justify-between">
                           Price:
                           <span className="text-red-500 font-semibold text-2xl lg:ml-5">
-                            {item.price}
+                            ${item.price.toFixed(2)}
                           </span>
                         </p>
                       </div>
