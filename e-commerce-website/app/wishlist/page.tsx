@@ -66,10 +66,13 @@ export default function Wishlist() {
                           </span>
                         </p>
                       </div>
-                      <MdDelete className="text-red-500 h-8 w-8 lg:mt-0 mt-10" />
+                      <MdDelete className="text-red-500 h-8 w-8 lg:mt-0 mt-10 hover:scale-105 cursor-pointer" />
                     </div>
                     <div className="flex justify-end w-full lg:-mt-0 -mt-10">
-                      <button className="rounded bg-rose-500 text-base text-white font-medium min-h-14 w-40">
+                      <button
+                        className="rounded bg-rose-500 text-base text-white font-medium min-h-14 w-40
+                      hover:bg-rose-800"
+                      >
                         Add to Cart
                       </button>
                     </div>

@@ -80,7 +80,7 @@ export default async function Products() {
                   <Link href={`/product-detail/${product.slug.current}`}>
                     <button
                       className="lg:mt-4 mt-3 mb-5 gap-2 rounded-full bg-rose-500 text-white min-h-12 w-36
-                  font-medium text-base"
+                  font-medium text-base hover:bg-rose-800"
                     >
                       Buy Now
                     </button>

@@ -16,7 +16,8 @@ const ClientSideButton = ({ product }: any) => {
   return (
     <button
       onClick={handleClick}
-      className="rounded bg-rose-500 text-base text-white font-medium min-h-14 w-40"
+      className="rounded bg-rose-500 text-base text-white font-medium min-h-14 w-40
+      hover:bg-rose-800"
     >
       Add to Cart
     </button>

@@ -52,7 +52,8 @@ export default function Cart() {
                           </span>
                         </p>
                       </div>
-                      <MdDelete className="text-red-500 h-8 w-8 lg:mt-0 mt-8" />
+                      <MdDelete className="text-red-500 h-8 w-8 lg:mt-0 mt-8 hover:scale-105
+                      cursor-pointer" />
                     </div>
                     <div className="flex justify-end w-full lg:-mt-0 -mt-7">
                       <div className="flex items-center">
@@ -87,7 +88,8 @@ export default function Cart() {
                   Total:{" "}
                   <span className="text-green-600 lg:ml-36 ml-32">$380</span>
                 </h2>
-                <button className="w-40 h-14 bg-rose-500 rounded-md text-white text-lg">
+                <button className="w-40 h-14 bg-rose-500 rounded-md text-white text-lg
+                hover:bg-rose-800">
                   Chekout
                 </button>
               </div>
