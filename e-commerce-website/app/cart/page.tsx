@@ -8,15 +8,18 @@ import { useEffect, useState } from "react";
 export default function Cart() {
   const [cart, setCart] = useState<any[]>([]);
 
-  // Fetch Cart Items from Local Storage
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    cart.push(storedCart);
-    setCart(storedCart);
-    console.log(storedCart.price);
-    console.log(storedCart.name);
-    console.log(storedCart.imageUrl);
+    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart.push(cartItems);
+    setCart(cartItems);
   }, []);
+
+  // Handle deleting an item from the wishlist
+  const handleDelete = (itemId: string) => {
+    const updatedCart = cart.filter((item) => item._id !== itemId); // Remove item with the given _id
+    setCart(updatedCart); // Update the wishlist state
+    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update localStorage
+  };
 
   return (
     <div className="">
@@ -52,8 +55,13 @@ export default function Cart() {
                           </span>
                         </p>
                       </div>
-                      <MdDelete className="text-red-500 h-8 w-8 lg:mt-0 mt-8 hover:scale-105
-                      cursor-pointer" />
+                      {/* Delete button */}
+                      <button onClick={() => handleDelete(item._id)}>
+                        <MdDelete
+                          className="text-red-500 h-8 w-8 lg:mt-0 mt-8 hover:scale-105
+                      cursor-pointer"
+                        />
+                      </button>
                     </div>
                     <div className="flex justify-end w-full lg:-mt-0 -mt-7">
                       <div className="flex items-center">
@@ -83,13 +91,17 @@ export default function Cart() {
                   <p className="text-lg">$20</p>
                 </div>
               </div>
-              <div className="flex flex-col lg:flex-row lg:gap-0 gap-4 items-center justify-between">
+              <div
+                className="flex flex-col lg:flex-row lg:gap-0 gap-4 lg:items-center lg:justify-between
+              justify-start"
+              >
                 <h2 className="text-2xl font-bold flex items-center">
-                  Total:{" "}
-                  <span className="text-green-600 lg:ml-36 ml-32">$380</span>
+                  Total: <span className="text-green-600 ml-36">$380</span>
                 </h2>
-                <button className="w-40 h-14 bg-rose-500 rounded-md text-white text-lg
-                hover:bg-rose-800">
+                <button
+                  className="w-40 h-14 bg-rose-500 rounded-md text-white text-lg
+                hover:bg-rose-800"
+                >
                   Chekout
                 </button>
               </div>

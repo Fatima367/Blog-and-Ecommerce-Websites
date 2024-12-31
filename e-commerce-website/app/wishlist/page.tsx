@@ -4,12 +4,11 @@ import { MdDelete } from "react-icons/md";
 import { IoHeartSharp } from "react-icons/io5";
 import { useEffect, useState } from "react";
 
-export default function Wishlist() {
+export default function Wishlist({ product }: any) {
   const [wishlist, setWishlist] = useState<any[]>([]);
 
   useEffect(() => {
     const favItems = JSON.parse(localStorage.getItem("wishlist") || "[]");
-    wishlist.push(favItems);
     setWishlist(favItems);
   }, []);
 
@@ -26,6 +25,13 @@ export default function Wishlist() {
         .join(" "); // Join the blocks if there are multiple
     }
     return "";
+  };
+
+  // Handle deleting an item from the wishlist
+  const handleDelete = (itemId: string) => {
+    const updatedWishlist = wishlist.filter((item) => item._id !== itemId); // Remove item with the given _id
+    setWishlist(updatedWishlist); // Update the wishlist state
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist)); // Update localStorage
   };
 
   return (
@@ -66,7 +72,13 @@ export default function Wishlist() {
                           </span>
                         </p>
                       </div>
-                      <MdDelete className="text-red-500 h-8 w-8 lg:mt-0 mt-10 hover:scale-105 cursor-pointer" />
+                      {/* Delete button */}
+                      <button onClick={() => handleDelete(item._id)}>
+                        <MdDelete
+                          className="text-red-500 h-8 w-8 lg:mt-0 mt-10 hover:scale-105
+                      cursor-pointer"
+                        />
+                      </button>
                     </div>
                     <div className="flex justify-end w-full lg:-mt-0 -mt-10">
                       <button

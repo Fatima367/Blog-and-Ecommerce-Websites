@@ -43,16 +43,18 @@ export default function BestSellingProducts() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center mx-auto mt-8 w-full
-    space-y-14 lg:px-8 px-1 lg:mb-14 mb-8">
     <div
-          className="bg-rose-600 text-white p-2 w-full flex bg-opacity-60 lg:rounded-3xl
+      className="flex flex-col items-center justify-center mx-auto mt-8 w-full
+    space-y-14 lg:px-8 px-1 lg:mb-14 mb-8"
+    >
+      <div
+        className="bg-rose-600 text-white p-2 w-full flex bg-opacity-60 lg:rounded-3xl
         lg:mt-auto mt-10 rounded-2xl"
-        >
-          <h2 className="lg:text-4xl text-3xl font-semibold lg:ml-5">
-            Best Selling Products
-          </h2>
-    </div>
+      >
+        <h2 className="lg:text-4xl text-3xl font-semibold lg:ml-5">
+          Best Selling Products
+        </h2>
+      </div>
       <div
         className="relative flex sm:grid-cols-2 lg:grid-cols-4 md:grid md:grid-cols-2 gap-8
            overflow-x-auto lg:overflow-visible mb-8 lg:w-full w-80 md:w-full mx-auto px-5"
@@ -108,12 +110,12 @@ export default function BestSellingProducts() {
       </div>
       <div className="flex items-center justify-center mx-auto lg:mt-8 mt-4">
         <Link href="/products">
-        <button
-          className="gap-2 rounded-full bg-rose-500 text-white min-h-14 w-44
-           font-medium text-lg"
-        >
-          View All Bundles
-        </button> 
+          <button
+            className="gap-2 rounded-full bg-rose-500 text-white min-h-14 w-44
+           font-medium text-lg hover:bg-rose-800"
+          >
+            View All Bundles
+          </button>
         </Link>
       </div>
     </div>
