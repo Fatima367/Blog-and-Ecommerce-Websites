@@ -1,3 +1,4 @@
+import CommentsUI from "@/app/comments/page";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
 import imageUrlBuilder from "@sanity/image-url";
@@ -48,7 +49,7 @@ export default async function blogPage({
       <Link href="/content">
         <div
           className="mb-4 items-center flex space-x-2 shadow-md w-fit p-2 px-4 rounded-lg
-       bg-slate-100 text-xl"
+       bg-slate-100 text-xl hover:bg-slate-200"
         >
           <p>←</p>
           Back
@@ -70,6 +71,7 @@ export default async function blogPage({
           <PortableText value={description} />
         </div>
       </div>
+      <CommentsUI slug={slug} />
     </main>
   );
 }

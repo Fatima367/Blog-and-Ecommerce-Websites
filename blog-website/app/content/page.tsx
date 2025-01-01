@@ -29,9 +29,9 @@ export default async function Content() {
                 className="object-cover h-60 w-full"
               />
               <h2 className="font-bold text-2xl line-clamp-2">{post.title}</h2>
-              <p className="text-base line-clamp-3">
+              <div className="text-base line-clamp-2 md:line-clamp-1 lg:line-clamp-2">
                 <PortableText value={post.description.slice(0, 1)} />
-              </p>
+              </div>
               <Link
                 href={`/blogs/${post.slug.current}`}
                 className="text-blue-700 font-bold underline text-lg hover:text-blue-900"
