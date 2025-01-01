@@ -12,7 +12,7 @@ export default function FavIcon({ product }: any) {
   useEffect(() => {
     // Get the current wishlist from localStorage
     const storedWishlist = localStorage.getItem("wishlist");
-    let wishlist = storedWishlist ? JSON.parse(storedWishlist) : [];
+    const wishlist = storedWishlist ? JSON.parse(storedWishlist) : [];
 
     // Check if the product is in the wishlist
     const isProductInWishlist = wishlist.some(
