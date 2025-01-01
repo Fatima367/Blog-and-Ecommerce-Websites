@@ -23,8 +23,15 @@ const eslintConfig = [
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "import/invalid-default-export": "off",
-      "ts-nocheck": true,
-      "ts-disable": true,
+      "@typescript-eslint/ban-ts-comment": [
+        "off", // Or "off" if you really want to disable it entirely
+        {
+          "ts-expect-error": "allow-with-description",
+          "ts-ignore": "allow-with-description",
+          "ts-nocheck": true,
+          "ts-disable": true,
+        },
+      ],
     },
   },
 ];
