@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 export default function FavIcon({ product }: any) {
   const [isFav, setIsFav] = useState(false);
