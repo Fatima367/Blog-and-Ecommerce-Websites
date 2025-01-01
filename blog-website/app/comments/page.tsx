@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
 
-export default function CommentsUI({ slug }: { slug: string }) {
+export default function CommentsUI({ slug }: any) {
   const [comments, setComments] = useState([]); // Store fetched comments
   const [newComment, setNewComment] = useState({ username: "", text: "" }); // New comment form
 
