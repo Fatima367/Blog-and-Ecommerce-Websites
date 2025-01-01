@@ -15,6 +15,7 @@ const eslintConfig = [
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
       'import/default': 'off',
+      "@next/next/no-server-import-in-page": "off",
     },
   },
 ];
