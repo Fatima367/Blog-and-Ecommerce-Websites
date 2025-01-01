@@ -1,4 +1,3 @@
-import React from 'react';
 import CommentsUI from "@/app/comments/page";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
@@ -26,11 +25,7 @@ const urlFor = (source: SanityImageSource) =>
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
-export default async function blogPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function blogPage({ params }: { params: { slug: string } }) {
   const { slug } = await params;
   const { data: posts } = await sanityFetch({
     query: BLOG_QUERY,

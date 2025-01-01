@@ -10,4 +10,4 @@ export default async function Home() {
       <About />
     </div>
   );
-}  
+}
