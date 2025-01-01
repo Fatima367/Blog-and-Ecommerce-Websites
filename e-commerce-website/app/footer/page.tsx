@@ -7,10 +7,10 @@ export default function Footer() {
       <div className="lg:flex p-6 grid items-center justify-center mx-auto bg-black">
         <div className="flex gap-5 ">
           <p className="text-white text-xl">Connect with us:</p>
-          <FaFacebook className="text-white h-6 w-6 hover:text-amber-300" />
-          <FaInstagram className="text-white h-6 w-6 hover:text-amber-300" />
-          <FaWhatsapp className="text-white h-6 w-6 hover:text-amber-300" />
-          <FaPhoneFlip className="text-white h-6 w-6 hover:text-amber-300" />
+          <FaFacebook className="text-white h-6 w-6 hover:text-amber-300 hover:cursor-pointer" />
+          <FaInstagram className="text-white h-6 w-6 hover:text-amber-300 hover:cursor-pointer" />
+          <FaWhatsapp className="text-white h-6 w-6 hover:text-amber-300 hover:cursor-pointer" />
+          <FaPhoneFlip className="text-white h-6 w-6 hover:text-amber-300 hover:cursor-pointer" />
         </div>
       </div>
       <div className="h-[1px] bg-[#131313] opacity-20 mt-1"> </div>

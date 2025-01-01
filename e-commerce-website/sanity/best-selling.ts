@@ -1,4 +1,4 @@
-import { defineType, validation } from "sanity";
+import { defineType } from "sanity";
 
 const bestSelling = defineType({
   name: "best-selling-products",
@@ -25,7 +25,7 @@ const bestSelling = defineType({
     },
     {
       name: "price",
-      type: "string",
+      type: "number",
       title: "Price",
       validation: (Rule) => Rule.required(),
     },

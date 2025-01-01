@@ -1,9 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import { IoHeartOutline, IoHeartSharp } from "react-icons/io5";
+import { ToastContainer, toast } from "react-toastify";
 
 export default function FavIcon({ product }: any) {
   const [isFav, setIsFav] = useState(false);
+  const savedToWl = () => toast("Item added to wishlist!");
+  const removed = () => toast("Item removed from wishlist!");
 
   // Check if the product is already in the wishlist when the component mounts
   useEffect(() => {
@@ -40,10 +43,12 @@ export default function FavIcon({ product }: any) {
         // If the product is not in the wishlist, add it
         wishlist.push(product);
         localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        savedToWl();
       } else {
         // If the product is in the wishlist, remove it
         wishlist.splice(productIndex, 1);
         localStorage.setItem("wishlist", JSON.stringify(wishlist));
+        removed();
       }
 
       // Toggle the favorite state
@@ -54,12 +59,14 @@ export default function FavIcon({ product }: any) {
   };
 
   return (
-    <button onClick={handleClick} className="absolute right-6">
-      {isFav ? (
-        <IoHeartSharp className="h-8 w-8 text-red-500 hover:scale-105" />
-      ) : (
-        <IoHeartOutline className="h-8 w-8 hover:scale-105" />
-      )}
-    </button>
+    <>
+      <button onClick={handleClick} className="absolute right-6">
+        {isFav ? (
+          <IoHeartSharp className="h-8 w-8 text-red-500 hover:scale-105" />
+        ) : (
+          <IoHeartOutline className="h-8 w-8 hover:scale-105" />
+        )}
+      </button>
+    </>
   );
 }

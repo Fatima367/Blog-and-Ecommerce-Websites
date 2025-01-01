@@ -34,7 +34,8 @@ export default async function Products() {
       </div>
       <div
         className="relative flex flex-col sm:grid-cols-2 lg:grid-cols-4 md:grid md:grid-cols-2 gap-8
-           mb-8 lg:w-full w-80 md:w-full mx-auto items-center justify-center lg:px-10 px-5"
+           mb-8 lg:w-full w-80 md:w-full mx-auto items-center justify-center lg:px-10 px-5 
+           lg:mb-16"
       >
         {products?.length > 0 ? (
           products.map((product: any) => (
@@ -45,16 +46,20 @@ export default async function Products() {
               key={product._id}
             >
               <FavIcon product={product} />
-              <Image
-                src={product.image || "/placeholder-image.png"}
-                width={300}
-                height={280}
-                alt="related-item"
-                className="self-center w-full h-auto object-cover mx-auto"
-              />
+              <Link href={`/product-detail/${product.slug.current}`}>
+                <Image
+                  src={product.image || "/placeholder-image.png"}
+                  width={300}
+                  height={280}
+                  alt="related-item"
+                  className="self-center w-full h-auto object-cover mx-auto"
+                />
+              </Link>
 
               <div className="space-y-2">
-                <p className="text-2xl font-bold">{product.name}</p>
+                <Link href={`/product-detail/${product.slug.current}`}>
+                  <p className="text-2xl font-bold">{product.name}</p>
+                </Link>
                 <div className="flex space-x-3 items-center">
                   <p className="text-2xl text-red-500 font-semibold">
                     ${product.price}

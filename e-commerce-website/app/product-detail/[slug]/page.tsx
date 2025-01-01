@@ -8,8 +8,8 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { sanityFetch } from "@/sanity/lib/live";
 import { notFound } from "next/navigation";
 import imageUrlBuilder from "@sanity/image-url";
-import MoreItems from "@/app/components/more-items";
 import ClientSideButton from "@/app/components/add-to-cart-button";
+import BestSellingProducts from "@/app/components/best-selling-products";
 
 const PRODUCTS_QUERY = defineQuery(`*[ 
   _type == "products" && 
@@ -168,7 +168,7 @@ export default async function ProductDetailsPage({
           >
             <h2 className="text-3xl font-semibold">More Items</h2>
           </div>
-          <MoreItems />
+          <BestSellingProducts />
         </div>
       </div>
     </div>
