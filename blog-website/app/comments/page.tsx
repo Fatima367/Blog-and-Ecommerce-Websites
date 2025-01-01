@@ -62,26 +62,26 @@ export default function CommentsUI({ slug }: { slug: string }) {
       </div>
 
       {comments.length > 0 ? (
-        <div className="p-6 rounded flex flex-col gap-8 w-full mb-16 shadow-md">
+        <div className="lg:p-6 p-2 rounded flex flex-col lg:gap-8 gap-4 w-full mb-16 shadow-md">
           {comments.map((comment: any) => (
             <div
-              className="p-6 border-b border-b-gray-200 rounded-md bg-gray-50"
+              className="lg:p-6 p-2 border-b border-b-gray-200 rounded-md bg-gray-50"
               key={comment._id}
             >
               <div className="flex gap-5">
                 <div className="p-2 ring-1 ring-gray-100 rounded-md mx-auto flex items-center h-fit">
-                  <FaUser className="h-11 w-14 text-gray-500" />
+                  <FaUser className="lg:h-11 lg:w-14 h-8 w-10 text-gray-500" />
                 </div>
                 <div className="flex flex-col items-start justify-between w-full">
                   <div className="lg:flex-row flex flex-col lg:items-start w-full">
                     <div className="flex flex-col">
-                      <h3 className="font-medium text-2xl text-black">
+                      <h3 className="font-medium lg:text-2xl text-xl text-black">
                         {comment.username}
                       </h3>
                       <p className="text-base">
                         {new Date(comment.date).toLocaleString()}
                       </p>
-                      <p className="text-lg lg:max-w-full min-h-14 mt-5">
+                      <p className="text-lg lg:max-w-full lg:min-h-14 min-h-6 lg:mt-5 mt-3">
                         {comment.text}
                       </p>
                     </div>

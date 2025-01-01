@@ -25,8 +25,14 @@ const urlFor = (source: SanityImageSource) =>
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
+    export async function generateStaticParams() {
+      const query = `*[_type == "blog"] { slug { current } }`;
+      const data = await client.fetch(query);
+      return data.map((blog) => ({ slug: blog.slug.current }));
+  }    
+
 export default async function blogPage({ params }: { params: { slug: string } }) {
-  const { slug } = await params;
+  const slug = params.slug;
   const { data: posts } = await sanityFetch({
     query: BLOG_QUERY,
     params: { slug },
