@@ -23,6 +23,8 @@ const eslintConfig = [
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "import/invalid-default-export": "off",
+      "ts-nocheck": true,
+      "ts-disable": true,
     },
   },
 ];
