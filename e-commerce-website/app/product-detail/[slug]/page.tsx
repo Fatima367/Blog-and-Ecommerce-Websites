@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import imageUrlBuilder from "@sanity/image-url";
 import ClientSideButton from "@/app/components/add-to-cart-button";
 import BestSellingProducts from "@/app/components/best-selling-products";
+import { ToastContainer } from "react-toastify";
 
 const PRODUCTS_QUERY = defineQuery(`*[ 
   _type == "products" && 
@@ -69,6 +70,10 @@ export default async function ProductDetailsPage({
           className="flex flex-col lg:flex-row items-start justify-start lg:mt-14 mt-8
         lg:px-0 px-2 md:px-10"
         >
+          <ToastContainer
+            className={`lg:w-full md:w-full w-60 lg:ml-0 ml-24 md:ml-0 md:mt-0 lg:mt-0 mt-3 lg:text-lg lg:p-2`}
+            hideProgressBar
+          />
           {/*Left*/}
           <div
             className="bg-gray-50 rounded-md

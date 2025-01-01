@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoIosBasket } from "react-icons/io";
 import FavIcon from "../components/fav-button";
+import { ToastContainer } from "react-toastify";
 
 const PRODUCTS_QUERY = defineQuery(`*[ 
   _type == "products"
@@ -28,6 +29,10 @@ export default async function Products() {
       className="flex flex-col items-start justify-center mx-auto mt-8
      w-full min-h-screen "
     >
+      <ToastContainer
+        className={`lg:w-full md:w-full w-60 lg:ml-0 ml-24 md:ml-0 md:mt-0 lg:mt-0 mt-3 lg:text-lg lg:p-2`}
+        hideProgressBar
+      />
       <div className="flex mb-8 items-center lg:px-20 px-5">
         <p className="text-4xl text-red-600 font-bold">Bundles</p>
         <IoIosBasket className="ml-2 h-7 w-7 text-rose-600" />

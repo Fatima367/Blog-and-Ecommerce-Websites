@@ -127,14 +127,16 @@ export default function Cart() {
                         <div className="ml-3 flex items-center">
                           <FaSquarePlus
                             onClick={() => handleIncreaseQuantity(item._id)}
-                            className="lg:h-9 lg:w-9 h-8 w-8 text-green-500"
+                            className="lg:h-9 lg:w-9 h-8 w-8 text-green-500 hover:text-green-600 
+                             hover:cursor-pointer"
                           />
                           <p className="text-xl lg:mx-4 mx-2">
                             {item.quantity}
                           </p>
                           <FaSquareMinus
                             onClick={() => handleDecreaseQuantity(item._id)}
-                            className="lg:h-9 lg:w-9 h-8 w-8 text-red-500"
+                            className="lg:h-9 lg:w-9 h-8 w-8 text-red-500 hover:text-red-800
+                            hover:cursor-pointer"
                           />
                         </div>
                       </div>

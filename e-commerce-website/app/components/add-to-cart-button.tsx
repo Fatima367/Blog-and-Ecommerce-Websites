@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const ClientSideButton = ({ product }: any) => {
   const [cart, setCart] = useState<any[]>([]);
+  const addedToCart = () => toast("Item added to cart!");
 
   const handleClick = () => {
     // Check if the product is valid before saving
@@ -30,6 +32,7 @@ const ClientSideButton = ({ product }: any) => {
         cart.push(product);
         localStorage.setItem("cart", JSON.stringify(cart));
         console.log("Product saved to cart:", product);
+        addedToCart();
       } else {
         // If the product is in the wishlist, remove it
         cart.splice(productIndex, 1);
