@@ -14,6 +14,7 @@ const eslintConfig = [
   {
     rules: {
       "import/default": "off",
+      "export/default": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
@@ -21,7 +22,7 @@ const eslintConfig = [
       "react/prop-types": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-explicit-any": "off",
-      "import/no-default-export": "off",
+      "import/invalid-default-export": "off",
     },
   },
 ];
