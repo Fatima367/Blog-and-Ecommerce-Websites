@@ -13,9 +13,11 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
+      "import/default": "off",
       "@typescript-eslint/no-explicit-any": "off",
-      'import/default': 'off',
-      "@next/next/no-server-import-in-page": "off",
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+      "no-unused-vars": "off"
     },
   },
 ];

@@ -100,7 +100,7 @@ export default function CommentsUI({ slug }: { slug: string }) {
         <div className="border-b border-b-gray-200 p-2">
           <input
             type="text"
-            placeholder="Your Username"
+            placeholder="Your Name"
             value={newComment.username}
             onChange={(e) =>
               setNewComment((prev) => ({ ...prev, username: e.target.value }))

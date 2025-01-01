@@ -1,3 +1,4 @@
+import React from 'react';
 import CommentsUI from "@/app/comments/page";
 import { client } from "@/sanity/lib/client";
 import { sanityFetch } from "@/sanity/lib/live";
