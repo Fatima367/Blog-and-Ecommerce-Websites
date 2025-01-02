@@ -27,9 +27,9 @@ export default function Wishlist({ product }: any) {
     return "";
   };
 
-  // Handle deleting an item from the wishlist
+  
   const handleDelete = (itemId: string) => {
-    const updatedWishlist = wishlist.filter((item) => item._id !== itemId); // Remove item with the given _id
+    const updatedWishlist = wishlist.filter((item) => item._id !== itemId);
     setWishlist(updatedWishlist); // Update the wishlist state
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist)); // Update localStorage
   };

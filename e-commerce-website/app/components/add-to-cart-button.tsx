@@ -3,13 +3,10 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const ClientSideButton = ({ product }: any) => {
-  const [cart, setCart] = useState<any[]>([]);
   const addedToCart = () => toast("Item added to cart!");
 
   const handleClick = () => {
-    // Check if the product is valid before saving
     if (product && product._id) {
-      // Get the current wishlist from localStorage
       const storedCart = localStorage.getItem("cart");
       let cart = storedCart ? JSON.parse(storedCart) : [];
 
@@ -19,7 +16,7 @@ const ClientSideButton = ({ product }: any) => {
         cart = []; // Reset to empty array if it's not valid
       }
 
-      console.log("Cart:", cart); // Log the wishlist
+      console.log("Cart:", cart);
 
       // Check if the product is already in the wishlist
       const productIndex = cart.findIndex(

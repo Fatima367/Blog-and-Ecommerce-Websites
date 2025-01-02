@@ -20,7 +20,7 @@ export default function CommentsUI({ slug }: any) {
     fetchComments();
   }, [slug]);
 
-  // Add a new comment
+  
   const handleAddComment = async () => {
     if (!newComment.username || !newComment.text) {
       alert("Username and comment text are required!");

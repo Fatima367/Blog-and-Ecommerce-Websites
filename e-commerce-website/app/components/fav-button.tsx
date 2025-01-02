@@ -8,9 +8,9 @@ export default function FavIcon({ product }: any) {
   const savedToWl = () => toast("Item added to wishlist!");
   const removed = () => toast("Item removed from wishlist!");
 
-  // Check if the product is already in the wishlist when the component mounts
+
   useEffect(() => {
-    // Get the current wishlist from localStorage
+    
     const storedWishlist = localStorage.getItem("wishlist");
     const wishlist = storedWishlist ? JSON.parse(storedWishlist) : [];
 
@@ -19,13 +19,13 @@ export default function FavIcon({ product }: any) {
       (item: any) => item._id === product._id
     );
 
-    // Set the state based on whether the product is in the wishlist
+    
     setIsFav(isProductInWishlist);
   }, [product._id]); // Re-run if the product changes (useEffect dependency array)
 
   const handleClick = () => {
     if (product && product._id) {
-      // Get the current wishlist from localStorage
+      
       const storedWishlist = localStorage.getItem("wishlist");
       let wishlist = storedWishlist ? JSON.parse(storedWishlist) : [];
 
@@ -34,7 +34,7 @@ export default function FavIcon({ product }: any) {
         wishlist = []; // Reset to empty array if it's not valid
       }
 
-      // Check if the product is already in the wishlist
+      
       const productIndex = wishlist.findIndex(
         (item: any) => item._id === product._id
       );
@@ -51,7 +51,7 @@ export default function FavIcon({ product }: any) {
         removed();
       }
 
-      // Toggle the favorite state
+      //to Toggle fav state
       setIsFav(!isFav);
     } else {
       console.error("Product is undefined or invalid");

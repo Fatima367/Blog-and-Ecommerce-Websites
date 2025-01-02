@@ -18,7 +18,7 @@ export default function Cart() {
     cart.push(cartItems);
     setCart(cartItems);
 
-    // Ensure `quantity` is initialized correctly
+
     const updatedCart = cartItems.map((item: any) => ({
       ...item,
       quantity: item.quantity || 1, // Default to 1 if quantity is undefined
@@ -28,7 +28,7 @@ export default function Cart() {
     setCart(updatedCart);
   }, []);
 
-  // Function to calculate subtotal
+  // Calculate subtotal
   useEffect(() => {
     const calculateSubtotal = () => {
       const total = cart.reduce((sum, item) => {
@@ -41,14 +41,14 @@ export default function Cart() {
     calculateSubtotal();
   }, [cart]);
 
-  // Handle deleting an item
+
   const handleDelete = (itemId: string) => {
-    const updatedCart = cart.filter((item) => item._id !== itemId); // Remove item by ID
+    const updatedCart = cart.filter((item) => item._id !== itemId);
     setCart(updatedCart); // Update state
-    localStorage.setItem("cart", JSON.stringify(updatedCart)); // Update localStorage
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Handle increasing item quantity
+  
   const handleIncreaseQuantity = (itemId: string) => {
     const updatedCart = cart.map((item) =>
       item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
@@ -57,7 +57,7 @@ export default function Cart() {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  // Handle decreasing item quantity
+  
   const handleDecreaseQuantity = (itemId: string) => {
     const updatedCart = cart.map((item) =>
       item._id === itemId && item.quantity > 1
