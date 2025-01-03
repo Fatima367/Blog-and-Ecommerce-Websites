@@ -9,6 +9,11 @@ import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const cartItems = parseFloat(cart.length);
+
+  const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+  const favItems = parseFloat(wishlist.length);
 
   return (
     <nav
@@ -37,19 +42,35 @@ const Navbar = () => {
         <Link href="/products">
           <p className="text-xl hover:text-amber-300 flex items-center">
             Bundles
-            <IoIosBasket className=" h-6 w-6 ml-2" />
+            <IoIosBasket className=" h-7 w-7 ml-2" />
           </p>
         </Link>
         <Link href="/wishlist">
           <p className="hover:text-amber-300 text-xl flex items-center">
             Wishlist
-            <IoHeartSharp className=" h-6 w-6 ml-2" />
+            <IoHeartSharp className=" h-7 w-7 ml-2" />
+            {favItems > 0 && (
+              <span
+                className="absolute top-3 right-32 bg-red-500 text-white text-xs h-5 w-5 rounded-full 
+            flex items-center justify-center mx-auto"
+              >
+                {cartItems}
+              </span>
+            )}
           </p>
         </Link>
         <Link href="/cart">
           <p className="hover:text-amber-300 text-xl flex items-center">
             Cart
-            <FaShoppingCart className="h-6 w-6 ml-2" />
+            <FaShoppingCart className="h-7 w-7 ml-2" />
+            {cartItems > 0 && (
+              <span
+                className="absolute top-3 right-7 bg-red-500 text-white text-xs h-5 w-5 rounded-full 
+            flex items-center justify-center mx-auto"
+              >
+                {cartItems}
+              </span>
+            )}
           </p>
         </Link>
       </div>
@@ -60,19 +81,35 @@ const Navbar = () => {
         >
           <Link href="/products">
             <li className="text-xl hover:text-amber-300 flex items-center">
-              <IoIosBasket className=" h-6 w-6 mr-2 mb-1" />
+              <IoIosBasket className=" h-7 w-7 mr-2 mb-2" />
               Bundles
             </li>
           </Link>
           <Link href="/wishlist">
             <li className="hover:text-amber-300 text-xl flex items-center">
-              <IoHeartSharp className=" h-6 w-6 mr-2 mb-1" />
+              <IoHeartSharp className=" h-7 w-7 mr-2 mb-1" />
               Wishlist
+              {favItems > 0 && (
+                <span
+                  className="absolute left-2 bottom-24 bg-red-500 text-white text-xs h-5 w-5 rounded-full 
+            flex items-center justify-center mx-auto"
+                >
+                  {cartItems}
+                </span>
+              )}
             </li>
           </Link>
           <Link href="/cart">
             <li className="hover:text-amber-300 text-xl flex items-center">
-              <FaShoppingCart className="h-6 w-6 mr-2 mb-1" /> Cart
+              <FaShoppingCart className="h-7 w-7 mr-2 mb-1" /> Cart
+              {cartItems > 0 && (
+                <span
+                  className="absolute left-2 bottom-11 bg-red-500 text-white text-xs h-5 w-5 rounded-full 
+            flex items-center justify-center mx-auto"
+                >
+                  {cartItems}
+                </span>
+              )}
             </li>
           </Link>
         </ul>
