@@ -5,6 +5,7 @@ import { MdDelete } from "react-icons/md";
 import { FaSquareMinus, FaSquarePlus } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
+import Link from "next/link";
 
 export default function Cart() {
   const [cart, setCart] = useState<any[]>([]);
@@ -17,7 +18,6 @@ export default function Cart() {
     const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
     cart.push(cartItems);
     setCart(cartItems);
-
 
     const updatedCart = cartItems.map((item: any) => ({
       ...item,
@@ -41,14 +41,12 @@ export default function Cart() {
     calculateSubtotal();
   }, [cart]);
 
-
   const handleDelete = (itemId: string) => {
     const updatedCart = cart.filter((item) => item._id !== itemId);
     setCart(updatedCart); // Update state
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  
   const handleIncreaseQuantity = (itemId: string) => {
     const updatedCart = cart.map((item) =>
       item._id === itemId ? { ...item, quantity: item.quantity + 1 } : item
@@ -57,7 +55,6 @@ export default function Cart() {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  
   const handleDecreaseQuantity = (itemId: string) => {
     const updatedCart = cart.map((item) =>
       item._id === itemId && item.quantity > 1
@@ -95,17 +92,21 @@ export default function Cart() {
               >
                 <div className="flex flex-col lg:flex-row gap-5">
                   <div className="p-2 ring-1 ring-gray-100 rounded-md mx-auto">
-                    <Image
-                      src={item.imageUrl}
-                      height={200}
-                      width={200}
-                      alt="cart"
-                    />
+                    <Link href={`/product-detail/${item.slug.current}`}>
+                      <Image
+                        src={item.imageUrl}
+                        height={200}
+                        width={200}
+                        alt="cart"
+                      />
+                    </Link>
                   </div>
                   <div className="flex flex-col items-start justify-between w-full">
                     <div className="flex flex-col lg:flex-row items-start justify-between w-full">
                       <div className="flex flex-col">
-                        <h3 className="font-bold text-2xl">{item.name}</h3>
+                        <Link href={`/product-detail/${item.slug.current}`}>
+                          <h3 className="font-bold text-2xl">{item.name}</h3>
+                        </Link>
                         <p className="text-xl mt-4">
                           Price:{" "}
                           <span className="text-red-500 font-semibold text-2xl">

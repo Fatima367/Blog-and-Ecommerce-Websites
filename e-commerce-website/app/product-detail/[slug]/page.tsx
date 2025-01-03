@@ -11,6 +11,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import ClientSideButton from "@/app/components/add-to-cart-button";
 import BestSellingProducts from "@/app/components/best-selling-products";
 import { ToastContainer } from "react-toastify";
+import FavIcon2 from "@/app/components/fav-btn2";
 
 const PRODUCTS_QUERY = defineQuery(`*[ 
   _type == "products" && 
@@ -135,7 +136,7 @@ export default async function ProductDetailsPage({
 
               <div className="flex mt-6 space-x-5 items-center">
                 <ClientSideButton product={products} />
-                <IoHeartOutline className="h-10 w-10" />
+                <FavIcon2 product={products} />
               </div>
             </div>
 

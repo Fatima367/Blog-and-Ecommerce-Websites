@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { toast } from "react-toastify";
 
 const ClientSideButton = ({ product }: any) => {
   const addedToCart = () => toast("Item added to cart!");
+  const alreadyInCart = () => toast("Item is already in the cart!");
 
   const handleClick = () => {
     if (product && product._id) {
@@ -30,10 +31,7 @@ const ClientSideButton = ({ product }: any) => {
         console.log("Product saved to cart:", product);
         addedToCart();
       } else {
-        // If the product is in the wishlist, remove it
-        cart.splice(productIndex, 1);
-        localStorage.setItem("wishlist", JSON.stringify(cart));
-        console.log("Product removed from wishlist:", product);
+        alreadyInCart();
       }
     } else {
       console.error("Product is not found");
