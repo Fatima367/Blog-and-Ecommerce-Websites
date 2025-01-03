@@ -90,7 +90,7 @@ export default function Wishlist({ product }: any) {
                   <div className="p-2 ring-1 ring-gray-100 rounded-md mx-auto">
                     <Link href={`/product-detail/${item.slug.current}`}>
                       <Image
-                        src={item.image}
+                        src={item.imageUrl}
                         height={200}
                         width={200}
                         alt="wishlist"
