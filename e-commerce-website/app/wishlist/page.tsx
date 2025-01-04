@@ -81,7 +81,7 @@ export default function Wishlist({ product }: any) {
 
         {wishlist.length > 0 ? (
           <div className="bg-white shadow-md p-6 rounded flex flex-col gap-8 w-full mb-16">
-            {wishlist.map((item: any) => (
+            {wishlist.map((item) => (
               <div
                 className="p-6 border-b border-b-gray-200 rounded-md bg-white"
                 key={item._id}

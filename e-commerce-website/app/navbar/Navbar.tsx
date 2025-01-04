@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { GiBowTieRibbon } from "react-icons/gi";
 import { IoIosBasket } from "react-icons/io";
@@ -9,21 +9,24 @@ import { RxCross2 } from "react-icons/rx";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
-  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-  const cartItems = parseFloat(cart.length);
+  const [cartItems, setCartItems] = useState(0);
+  const [favItems, setFavItems] = useState(0);
 
-  const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
-  const favItems = parseFloat(wishlist.length);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      setCartItems(cart.length);
+
+      const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+      setFavItems(wishlist.length);
+    }
+  }, []);
 
   return (
-    <nav
-      className="top-0 p-5 flex relative items-center justify-between
-     text-white bg-black"
-    >
+    <nav className="top-0 p-5 flex relative items-center justify-between text-white bg-black">
       <div className="flex justify-start lg:mx-5 items-center">
         <button
-          className="absolute cursor-pointer top-6 
-                    right-4 w-[2rem] h-[1rem] lg:hidden"
+          className="absolute cursor-pointer top-6 right-4 w-[2rem] h-[1rem] lg:hidden"
           onClick={() => setShowNav(!showNav)}
         >
           {showNav ? (
@@ -52,9 +55,9 @@ const Navbar = () => {
             {favItems > 0 && (
               <span
                 className="absolute top-3 right-32 bg-red-500 text-white text-xs h-5 w-5 rounded-full 
-            flex items-center justify-center mx-auto"
+                flex items-center justify-center mx-auto"
               >
-                {cartItems}
+                {favItems}
               </span>
             )}
           </p>
@@ -66,7 +69,7 @@ const Navbar = () => {
             {cartItems > 0 && (
               <span
                 className="absolute top-3 right-7 bg-red-500 text-white text-xs h-5 w-5 rounded-full 
-            flex items-center justify-center mx-auto"
+                flex items-center justify-center mx-auto"
               >
                 {cartItems}
               </span>
@@ -94,7 +97,7 @@ const Navbar = () => {
                   className="absolute left-2 bottom-24 bg-red-500 text-white text-xs h-5 w-5 rounded-full 
             flex items-center justify-center mx-auto"
                 >
-                  {cartItems}
+                  {favItems}
                 </span>
               )}
             </li>
