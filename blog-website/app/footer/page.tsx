@@ -1,6 +1,6 @@
 import Link from "next/link";
 import {
-  FaLinkedin,
+  FaTwitter,
 } from "react-icons/fa";
 
 export default function Footer() {
@@ -11,11 +11,11 @@ export default function Footer() {
           <p className="text-white text-2xl">Connect with us:</p>
           <Link
             href={
-              "https://www.linkedin.com/in/fatima-faisal-7086b330a/?trk=opento_sprofile_topcard"
+              "https://x.com/Fatimaa_FS"
             }
             target="_blank"
           >
-            <FaLinkedin className="text-white h-6 w-6 hover:scale-105 hover:text-blue-200" />
+            <FaTwitter className="text-white h-6 w-6 hover:scale-105 hover:text-blue-200" />
           </Link>
         </div>
       </div>
