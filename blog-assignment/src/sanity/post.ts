@@ -98,11 +98,12 @@ const post = {
 			media: "mainImage",
 		},
 		prepare(selection: any) {
-			const { author } = selection;
-			return Object.assign({}, selection, {
-				subtitle: author && `by ${author}`,
-			});
-		},
+		const { author } = selection;
+		return {
+			...selection,
+			subtitle: author && `by ${author}`,
+		};
+	  },
 	},
 };
 export default post;
