@@ -59,7 +59,6 @@ export default function FavIcon({ product }: any) {
   };
 
   return (
-    <>
       <button onClick={handleClick} className="absolute right-6">
         {isFav ? (
           <IoHeartSharp className="h-8 w-8 text-red-500 hover:scale-105" />
@@ -67,6 +66,5 @@ export default function FavIcon({ product }: any) {
           <IoHeartOutline className="h-8 w-8 hover:scale-105" />
         )}
       </button>
-    </>
   );
 }
