@@ -10,9 +10,10 @@ import Link from "next/link";
 export default function Cart() {
   const [cart, setCart] = useState<any[]>([]);
   const [subtotal, setSubtotal] = useState(0);
-  const [deliveryCharges] = useState(20);
   const [isCheckout, setIsCheckout] = useState(false);
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
+  const deliveryCharges = 20;
+
 
   useEffect(() => {
     const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -85,10 +86,10 @@ export default function Cart() {
         </div>
         {cart.length > 0 ? (
           <div className="bg-white shadow-md lg:p-6 p-2 rounded flex flex-col gap-8 w-full mb-16">
-            {cart.map((item: any, index: any) => (
+            {cart.map((item: any,) => (
               <div
                 className="p-6 border-b border-b-gray-200 rounded-md bg-white"
-                key={index}
+                key={item._id}
               >
                 <div className="flex flex-col lg:flex-row gap-5">
                   <div className="p-2 ring-1 ring-gray-100 rounded-md mx-auto">

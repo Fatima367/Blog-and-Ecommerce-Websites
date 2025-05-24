@@ -24,7 +24,7 @@ export default function FavIcon({ product }: any) {
   }, [product._id]); // Re-run if the product changes (useEffect dependency array)
 
   const handleClick = () => {
-    if (product && product._id) {
+    if (product?._id) {
       
       const storedWishlist = localStorage.getItem("wishlist");
       let wishlist = storedWishlist ? JSON.parse(storedWishlist) : [];

@@ -7,7 +7,7 @@ const ClientSideButton = ({ product }: any) => {
   const alreadyInCart = () => toast("Item is already in the cart!");
 
   const handleClick = () => {
-    if (product && product._id) {
+    if (product?._id) {
       const storedCart = localStorage.getItem("cart");
       let cart = storedCart ? JSON.parse(storedCart) : [];
 

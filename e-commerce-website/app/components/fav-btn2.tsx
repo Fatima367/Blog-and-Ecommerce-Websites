@@ -27,7 +27,7 @@ export default function FavIcon2({ product }: any) {
   }, [product._id, isClient]); // Run again if product._id or isClient change
 
   const handleClick = (product: any) => {
-    if (product && product._id && isClient) {
+    if (product?._id && isClient) {
       const storedWishlist = localStorage.getItem("wishlist");
       let wishlist = storedWishlist ? JSON.parse(storedWishlist) : [];
 

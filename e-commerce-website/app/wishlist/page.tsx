@@ -39,7 +39,7 @@ export default function Wishlist({ product }: any) {
   };
 
   const handleClick = (item: any) => {
-    if (item && item._id) {
+    if (item?._id) {
       const storedCart = localStorage.getItem("cart");
       let cart = storedCart ? JSON.parse(storedCart) : [];
 
@@ -107,10 +107,7 @@ export default function Wishlist({ product }: any) {
                           {renderDescription(item.description)}
                         </p>
                         <p className="text-xl mt-4 lg:justify-start flex items-center justify-between">
-                          Price:
-                          <span className="text-red-500 font-semibold text-2xl lg:ml-5">
-                            ${item.price.toFixed(2)}
-                          </span>
+                          Price: <span className="text-red-500 font-semibold text-2xl lg:ml-5">${item.price.toFixed(2)}</span>
                         </p>
                       </div>
                       {/* Delete button */}

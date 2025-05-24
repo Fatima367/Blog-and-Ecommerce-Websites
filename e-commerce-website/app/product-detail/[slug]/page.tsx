@@ -37,9 +37,9 @@ const urlFor = (source: SanityImageSource) =>
 
 export default async function ProductDetailsPage({
   params,
-}: {
+}: Readonly<{
   params: Promise<{ slug: string }>;
-}) {
+}>) {
   const { slug } = await params;
   const { data: products } = await sanityFetch({
     query: PRODUCTS_QUERY,
