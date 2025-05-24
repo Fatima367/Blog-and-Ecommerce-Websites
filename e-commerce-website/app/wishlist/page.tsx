@@ -12,7 +12,7 @@ export default function Wishlist({ product }: any) {
   const alreadyInCart = () => toast("Item is already in the cart!");
 
   useEffect(() => {
-    const favItems = JSON.parse(localStorage.getItem("wishlist") || "[]");
+    const favItems = JSON.parse(localStorage.getItem("wishlist") ?? "[]");
     setWishlist(favItems);
     console.log("Product passed to Wishlist:", favItems);
   }, []);

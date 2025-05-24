@@ -14,10 +14,10 @@ const Navbar = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      const cart = JSON.parse(localStorage.getItem("cart") ?? "[]");
       setCartItems(cart.length);
 
-      const wishlist = JSON.parse(localStorage.getItem("wishlist") || "[]");
+      const wishlist = JSON.parse(localStorage.getItem("wishlist") ?? "[]");
       setFavItems(wishlist.length);
     }
   }, []);

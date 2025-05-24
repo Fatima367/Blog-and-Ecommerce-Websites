@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { IoHeartOutline } from "react-icons/io5";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import { defineQuery, PortableText } from "next-sanity";
