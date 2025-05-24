@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   try {
     const { body, isValidSignature } = await parseBody<{
       _type: string;
-      slug?: string | undefined;
+      slug?: string;
     }>(req, process.env.SANITY_HOOK_SECRET);
 
     if (!isValidSignature) {
