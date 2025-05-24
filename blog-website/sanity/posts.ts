@@ -1,4 +1,4 @@
-import { defineType, validation } from "sanity";
+import { defineType } from "sanity";
 
 const posts = defineType(
 {
