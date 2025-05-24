@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <div className="py-5">
       {posts?.length > 0 ? (
-        posts.map((post: any, i) => <BlogItem key={i} blog={post} />)
+        posts.map((post: any) => <BlogItem key={post._id} blog={post} />)
       ) : (
         <p>No posts found</p>
       )}

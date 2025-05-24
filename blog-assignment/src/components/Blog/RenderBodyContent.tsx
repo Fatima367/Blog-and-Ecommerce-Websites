@@ -50,9 +50,9 @@ const Table = ({ value }: any) => {
         <tbody>
           {value.rows.map((row: any) => (
             <tr key={row._key}>
-              {row.cells.map((cell: any, key: any) => (
+              {row.cells.map((cell: any, cellIndex: number) => (
                 <td
-                  key={key}
+                  key={`${row._key}-${cellIndex}`}
                   className="first-of-type:bg-gray-100 max-w-[100px]"
                 >
                   <span className="px-4">{cell}</span>
